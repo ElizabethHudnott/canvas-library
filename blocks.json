@@ -1,0 +1,107 @@
+[{
+  "type": "begin_shape",
+  "message0": "begin shape at ( %1 %2 , %3 %4 )",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "X",
+      "check": "Number"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "Y",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 195,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "line_to",
+  "message0": "line to ( %1 %2 , %3 %4 )",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "X",
+      "check": "Number"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "Y",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 195,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "fill",
+  "message0": "fill %1 %2",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "COLOR",
+      "check": "Color"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 195,
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
+  "type": "color",
+  "message0": "hue %1 saturation %2 lightness %3 opacity %4",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "HUE",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "SATURATION",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "LIGHTNESS",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "OPACITY",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": false,
+  "output": "Color",
+  "colour": 300,
+  "tooltip": "",
+  "helpUrl": ""
+}]
