@@ -26,40 +26,30 @@ function drawPicture() {
 	square(color2);
 }
 
-function resizeCanvas() {
-	canvas.width = canvas.clientWidth;
-	canvas.height = canvas.clientHeight - 6;
-	drawPicture();
-}
-
-$('#drawing-tab').on('shown.bs.tab', resizeCanvas);
+const blocklyArea = document.getElementById('blockly-area');
+const blocklyDiv = document.getElementById('blockly-div');
+let workspace;
 
 function resize() {
-	// Compute the absolute coordinates and dimensions of blocklyArea.
-	let element = blocklyArea;
-	let x = 0;
-	let y = 0;
-	do {
-		x += element.offsetLeft;
-		y += element.offsetTop;
-		element = element.offsetParent;
-	} while (element);
-	// Position blocklyDiv over blocklyArea.
-	blocklyDiv.style.left = x + 'px';
-	blocklyDiv.style.top = y + 'px';
-	blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-	blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
 	if (workspace) {
 		Blockly.svgResize(workspace);
 	}
-	resizeCanvas();
+	canvas.width = '1';
+	canvas.width = canvas.clientWidth;
+	canvas.height = canvas.clientHeight;
+	drawPicture();
 }
 
 window.addEventListener('resize', resize);
 
-const blocklyArea = document.getElementById('blockly-area');
-const blocklyDiv = document.getElementById('blockly-div');
-let workspace;
+{
+	const observer = new MutationObserver(function (mutations, observer) {
+		blocklyArea.classList.remove('w-50');
+		canvas.classList.remove('w-50');
+		resize();
+	});
+	observer.observe(blocklyArea, {attributeFilter: ['style']});
+}
 
 fetch('blocks.json')
 .then(async function (response) {
