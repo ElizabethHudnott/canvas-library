@@ -4,7 +4,16 @@ export class Drawing {
 		this.scaleY = 1;
 		this.nudged = false;
 		this.context = undefined;
-		this.stack = [];
+	}
+
+	erase() {
+		this.scaleX = 1;
+		this.scaleY = 1;
+		this.nudged = false;
+		const context = this.context;
+		const canvas = context.canvas;
+		context.setTransform(1, 0, 0, 1, 0, 0);
+		context.clearRect(0, 0, canvas.width, canvas.height);
 	}
 
 	setContext(context) {

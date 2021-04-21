@@ -1,10 +1,10 @@
 import {Drawing, Color, Colors} from '/js/canvas-lib.js';
+window.Color = Color;
 
 const canvas = document.getElementById('canvas');
 
-const drawing = new Drawing();
+window.drawing = new Drawing();
 drawing.setContext(canvas.getContext('2d'));
-
 
 function square(color) {
 	drawing.newShape(0, 0);
@@ -15,7 +15,7 @@ function square(color) {
 	drawing.fill(color);
 }
 
-function drawPicture() {
+window.drawPicture = function () {
 	drawing.moveAbsolute(100, 100, 100);
 	const color = new Color(0);
 	square(color);
@@ -54,8 +54,9 @@ fetch('blocks.json')
 	}
 	const json = await response.json();
 	Blockly.defineBlocksWithJsonArray(json);
+	const blocklyDiv = document.getElementById('blockly-div');
 
-	workspace = Blockly.inject(document.getElementById('blockly-div'), {
+	workspace = Blockly.inject(blocklyDiv, {
 		move: {
 			wheel: true,
 		},
@@ -69,4 +70,15 @@ fetch('blocks.json')
 	});
 
 	resize();
+
+	const toolbox = blocklyDiv.querySelector('.blocklyToolboxContents');
+	const runButton = document.createElement('BUTTON');
+	runButton.type = 'button';
+	runButton.innerHTML = 'Run';
+	runButton.addEventListener('click', function (event) {
+		const code = Blockly.JavaScript.workspaceToCode(workspace);
+		window.drawPicture = Function('"use strict";drawing.erase();' + code);
+		drawPicture();
+	});
+	toolbox.appendChild(runButton);
 });

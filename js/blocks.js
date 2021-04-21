@@ -2,18 +2,18 @@ Blockly.JavaScript['begin_shape'] = function(block) {
   const argX = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_COMMA) || '0';
   const argY = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_COMMA) || '0';
 
-  return `drawing.newShape(${argX}, ${argY});\n'`;
+  return `drawing.newShape(${argX}, ${argY});\n`;
 };
 
 Blockly.JavaScript['line_to'] = function(block) {
   const argX = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_COMMA) || '0';
   const argY = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_COMMA) || '0';
 
-  return `drawing.lineTo(${argX}, ${argY});\n'`;
+  return `drawing.lineTo(${argX}, ${argY});\n`;
 };
 
 Blockly.JavaScript['fill'] = function(block) {
-  const argColor = Blockly.JavaScript.valueToCode(block, 'COLOR', Blockly.JavaScript.NONE) || 'Colors.BLACK';
+  const argColor = Blockly.JavaScript.valueToCode(block, 'COLOR', Blockly.JavaScript.ORDER_NONE) || 'Colors.BLACK';
   return `drawing.fill(${argColor});\n`;
 };
 
