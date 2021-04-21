@@ -26,15 +26,12 @@ function drawPicture() {
 	square(color2);
 }
 
-const blocklyArea = document.getElementById('blockly-area');
-const blocklyDiv = document.getElementById('blockly-div');
 let workspace;
 
 function resize() {
 	if (workspace) {
 		Blockly.svgResize(workspace);
 	}
-	canvas.width = '1';
 	canvas.width = canvas.clientWidth;
 	canvas.height = canvas.clientHeight;
 	drawPicture();
@@ -42,14 +39,13 @@ function resize() {
 
 window.addEventListener('resize', resize);
 
-{
-	const observer = new MutationObserver(function (mutations, observer) {
-		blocklyArea.classList.remove('w-50');
-		canvas.classList.remove('w-50');
-		resize();
-	});
-	observer.observe(blocklyArea, {attributeFilter: ['style']});
-}
+Split({
+	columnGutters: [{
+		track: 1,
+		element: document.getElementById('gutter'),
+	}],
+	onDrag: resize
+});
 
 fetch('blocks.json')
 .then(async function (response) {
@@ -59,7 +55,7 @@ fetch('blocks.json')
 	const json = await response.json();
 	Blockly.defineBlocksWithJsonArray(json);
 
-	workspace = Blockly.inject(blocklyDiv, {
+	workspace = Blockly.inject(document.getElementById('blockly-div'), {
 		move: {
 			wheel: true,
 		},

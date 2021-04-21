@@ -5,19 +5,21 @@
 	<link rel="stylesheet" href="site.css">
 	<script src="https://unpkg.com/blockly/blockly.min.js" defer></script>
 	<script src="js/blocks.js" defer></script>
+	<script src="https://unpkg.com/split-grid/dist/split-grid.js"></script>
 	<script src="js/util.js" defer></script>
 	<script type="module" src="js/ui.js" defer></script>
 	<meta name="viewport" content="initial-scale=1, minimum-scale=1">
 </head>
 <body class="m-0">
-	<div class="d-flex h-100">
-		<div class="w-50 flex-grow-1 resizable-x overflow-hidden" id="blockly-area">
+	<div class="h-100" style="display: grid; grid-template-columns: 1fr 2px 1fr">
+		<div id="blockly-area">
 			<div class="w-100 h-100" id="blockly-div"></div>
 		</div>
-		<canvas class="w-50 flex-grow-1 flex-shrink-1" id="canvas"></canvas>
+		<div id="gutter" class="gutter"></div>
+		<canvas class="w-100 h-100" id="canvas"></canvas>
 	</div>
 
-	<xml id="toolbox" style="display: none">
+	<xml id="toolbox" class="d-none">
 		<category name="Draw">
 			<block type="begin_shape"></block>
 			<block type="line_to"></block>
