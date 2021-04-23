@@ -1,0 +1,29 @@
+close path
+fill
+line to (<x>, <y>)
+move to (<x>, <y>)
+move right <dx>
+move down <dy>
+begin shape
+begin shape at (<x>, <y>)
+clear/fill/stroke rectangle
+	x
+	y
+	width
+	height
+rotate <turns>
+scale <multiple>
+scaleXY <xMultiple, yMultiple>
+set fill <style>
+set stroke <style>
+stroke
+begin subshape
+begin subshape at (<x>, <y>)
+
+colour <hue>°
+set hue of <colour> to <amount>°
+set saturation of <colour> to <amount>
+set lightness of <colour> to <amount>
+set opacity of <colour> to <amount>
+copy <colour>
+preset colours

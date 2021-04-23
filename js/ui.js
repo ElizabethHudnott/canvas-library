@@ -6,24 +6,7 @@ const canvas = document.getElementById('canvas');
 window.drawing = new Drawing();
 drawing.setContext(canvas.getContext('2d'));
 
-function square(color) {
-	drawing.newShape(0, 0);
-	drawing.lineTo(1, 0);
-	drawing.lineTo(1, 1);
-	drawing.lineTo(0, 1);
-	drawing.closePath();
-	drawing.fill(color);
-}
-
 window.drawPicture = function () {
-	drawing.moveAbsolute(100, 100, 100);
-	const color = new Color(0);
-	square(color);
-
-	drawing.moveRelative(1.1, 0.25, 0);
-	drawing.setScale(50);
-	const color2 = color.hueShift(30);
-	square(color2);
 }
 
 let workspace;
@@ -68,6 +51,7 @@ fetch('blocks.json')
 			startScale: 0.9,
 		}
 	});
+	workspace.toolbox_.flyout_.autoClose = false;
 
 	resize();
 
