@@ -1,4 +1,4 @@
-import {Drawing, Color, Colors} from '/js/canvas-lib.js';
+import {Drawing, Color, Colors} from './canvas-lib.js';
 window.Color = Color;
 
 const canvas = document.getElementById('canvas');
